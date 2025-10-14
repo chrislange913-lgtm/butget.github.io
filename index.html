@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4CAF50">
+    <title>Ausgaben-Splitter</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="menuToggle">☰</div>
+    <div id="menu">
+        <label for="sessionSelect">Session auswählen:</label>
+        <select id="sessionSelect"></select>
+        <input type="text" id="newSessionName" placeholder="Neuer Session-Name">
+        <button onclick="addSession()">Neue Session</button>
+        <br><br>
+        <button id="darkModeToggle">Dark Mode umschalten</button>
+        <br><br>
+        <button id="installBtn" style="display: none;">App installieren</button>
+    </div>
+    <h1>Ausgaben-Splitter</h1>
+    <div id="welcome">
+        <h2>Willkommen zum Ausgaben-Splitter! 💰</h2>
+        <p>Teile deine Ausgaben fair mit Freunden auf.</p>
+        <p>Öffne das Menü oben links ☰ und erstelle eine neue Session, um zu starten.</p>
+        <p>Erstelle getrennte Sessions für verschiedene Events!</p>
+        <div class="icons">
+            <span>👥</span>
+            <span>💵</span>
+            <span>📊</span>
+            <span>🎉</span>
+        </div>
+    </div>
+    <div id="mainContent">
+    <div id="people">
+        <h2>Personen hinzufügen</h2>
+        <input type="text" id="personName" placeholder="Name eingeben">
+        <button onclick="addPerson()">Person hinzufügen</button>
+        <ul id="peopleList"></ul>
+    </div>
+    <div id="expenses">
+        <h2>Ausgaben hinzufügen</h2>
+        <input type="text" id="expenseDesc" placeholder="Beschreibung">
+        <input type="number" id="expenseAmount" placeholder="Betrag in €" step="0.01">
+        <button onclick="addExpense()">Ausgabe hinzufügen</button>
+        <ul id="expensesList"></ul>
+    </div>
+    <div id="split">
+        <h2>Aufteilung berechnen</h2>
+        <button onclick="calculateSplit()">Berechnen</button>
+        <div id="results"></div>
+    </div>
+    </div>
+    <div id="currentSession">Aktuelle Session: <span id="sessionName"></span> <button onclick="deleteSession()" id="deleteBtn">Löschen</button></div>
+    <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js');
+      }
+    </script>
+</body>
+</html>
